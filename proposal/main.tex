@@ -1,0 +1,319 @@
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[letterpaper, portrait, margin=1in, headheight=15pt]{geometry}
+\usepackage{longtable}
+\usepackage[
+  backend=biber,
+  citestyle=numeric-comp,
+  bibstyle=ieee,
+]{biblatex}
+\setenumerate[1]{label=\textbf{\thesubsection.\arabic*.}, ref=\textbf{\thesubsection.\arabic*}, leftmargin=0.465in}
+\setenumerate[2]{label*=\bf\arabic*.}
+\setenumerate[3]{label*=\bf\arabic*.}
+\setmainfont{Adobe Garamond Pro}
+\pagestyle{fancy}
+\lhead{Joshua Jolley}
+\chead{Senior Project Proposal}
+\rhead{CS499}
+
+\addbibresource{main.bib}
+\usepackage{microtype}
+\begin{document}
+  \section{Scripture}
+  Amos 8:12\\
+  12. And they shall wander from sea to sea, and from the north even to the east,
+  they shall run to and fro to seek the [exit of the maze], and shall not find it.
+
+\section{Abstract}
+  \subsection{Focus}
+	 The focus of this project is genetic algorithms.
+  \subsection{Application}
+	 The application of this focus is creating a genetic algorithm library and using it to use to solve well-formed mazes.
+\section{Background}
+  \subsection{Definitions}
+  \begin{enumerate}
+	 \item\label{breeding}
+		\textbf{Breeding:}
+		Producing one or more children from a population of parents through an iterated process of 
+		selection and tweaking.~\cite{Luke2013Metaheuristics}
+		
+	 \item\label{child}
+		\textbf{Child:}
+		A child is the tweaked copy of a candidate solution (its parent).~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{chromosome}
+		\textbf{Chromosome}
+		A genome in the form of a fixed-length vector.~\cite{Luke2013Metaheuristics}
+
+	 \item\label{crossover}
+		\textbf{Crossover:}
+		A type of tweak where a combination of the genomes from two parents are 
+		used.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{deceptiveProblem}
+		\textbf{Deceptive Problem:}
+		A problem where solutions tend to converge on local optimums instead of the global optimum.~\cite{paul}
+
+	 \item\label{fitness} 
+		\textbf{Fitness:}
+		A measurement of the quality of a candidate solution.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{gene}
+		\textbf{Gene:}
+		A particular position in a chromosome.~\cite{Luke2013Metaheuristics} Applied to this project, a gene will be a direction to attempt to travel (e.g., north, east, south, west).
+
+	 \item\label{generation}
+		\textbf{Generation:}
+		One cycle of fitness assessment, breeding, and
+		population reassembly.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{geneticAlgorithm}
+		\textbf{Genetic Algorithm:} A genetic algorithm is a search heuristic.~\cite{thomas} Genetic algorithms search for a solution to a problem by mimicking evolution's processes of crossover and mutation within a population.~\cite{paul}
+	 \item\label{genome}
+		\textbf{Genome:}
+		An individual's data structure, as used during breeding.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{globalOptimimum}
+		\textbf{Global Optimum:}
+		The best possible solution to a problem.~\cite{blackGlobal}
+	 
+	 \item\label{individual}
+		\textbf{Individual:} 
+		A candidate solution.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{localOptimum}
+		\textbf{Local Optimization:} A solution to a problem that is better than all other solutions 
+		that are slightly different, but worse than the global optimum.~\cite{blackLocal}
+	 
+	 \item\label{mutation}
+		\textbf{Mutation:}
+		Pseudo-randomly tweaking an individual's genome.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{population}
+		\textbf{Population:}
+		A set of candidate solutions.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{parent}
+		\textbf{Parent:}
+		A parent is a candidate solution whose genome was used to create a new
+		candidate solution (its child).~\cite{Luke2013Metaheuristics} 
+	 
+	 \item\label{selection}
+		\textbf{Selection:}
+		Picking individuals to tweak based on their fitness.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{tweak}
+		\textbf{Tweak:}
+		To make a change to the genome of a candidate solution.~\cite{Luke2013Metaheuristics}
+	 
+	 \item\label{wellFormedMaze}
+		\textbf{Well-formed Maze:}
+		A well-formed maze has the following properties:
+		\begin{itemize}
+		  \item It must be a finite, undirected, connected graph.
+		  \item It must have only one entrance vertex.
+		  \item It must have only one exit vertex.
+  		  \item The entrance vertex and the exit vertex must not be the same vertex.
+		  \item There exists at least one simple open path from the entrance vertex to the exit vertex whose length is less than the maximum length of the genomes of the individuals traversing it.
+		  \item The degree of each vertex must be less than 5.
+		\end{itemize}
+  \end{enumerate}
+
+  \subsection{Why Genetic Algorithms?}
+  My interest in Genetic Algorithms was sparked by watching a YouTube video\footnote{\url{https://www.youtube.com/watch?v=qv6UVOQ0F44}} about Mari/o. The author combined neural networks and genetic algorithms to create a program that can beat various levels from the classic SNES game Super Mario World. The idea of a program building up a complicated program from simple pieces was very appealing to me. Previous to hearing about Mari/o I had briefly read about an ``evolved antenna\footnote{The one I read about was NASA's ST5 antenna. \url{https://en.wikipedia.org/wiki/Evolved\_antenna} }'' which used an evolutionary algorithm to make an antenna suited to the X-band.~\cite{hornby2006antenna}
+  \subsection{Prior work by others}
+  Applying genetic algorithms to maze solving has been done by others in the past. It is a relatively simple application of genetic algorithms, with the main difficulty being the deceptive nature of the problem (See~\ref{deceptiveProblem}). Thomas Pasquier and Julien Erdogan from the Institut Superieur d'Electronique de Paris solved this problem by removing ``rooms'' from the maze (meaning they limit the path through the maze to only be one space wide), implementing a specialized segment crossover, and using an optimization for mutation that corrects the first move that hits a wall into a valid move.~\cite{thomas}
+  Arild Berg also uses optimization in his approach.~\cite{ardid} Additionally, he created a website that allows you to adjust several of the variables involved, including population size, crossover scheme, max generation steps, population size, gene size, mutation ratio, etc.~\cite{ardid}
+  Forrest Sondahl's approach was to create a general maze solving algorithm creating a genome out of rules rather than discrete steps to solve the maze.~\cite{sondahl}  His website also features the ability to adjust the variables and watch the program run.~\cite{sondahl}
+  \subsection{Prior work by me}
+    Excluding the research I've done to write this paper, I have done no work on genetic algorithms or programmatic maze solving. I have studied graph theory in discrete mathematics, which will be useful for this project. I also enjoyed solving mazes when I was a kid.  
+\section{Description}
+  \subsection{Description of project}
+  The goal of this project is to fully implement a genetic algorithm library such that it can be used to solve well-formed mazes, and then successfully use it.Genetic Algorithms differ from other evolutionary algorithms by selectively breeding and by including individuals from previously evaluated generations in subsequent generations.~\cite{paul} I plan to apply genetic algorithms to maze solving as follows.
+
+  There are 4 phases to genetic algorithms, the last 3 occuring in a loop until an end condition is met. (In this case solving the maze or a certain amount of time passing.)
+  \begin{itemize}
+		  \item Setup - Setup your fitness function, your genome, and generate a starting population.
+		  \item Fitness Evaluation - Evaluate the fitness of each individual in your current population.
+		  \item Selection - Select the individuals to keep in the population.  From those you keep, select who you will breed to create the next generation.
+		  \item Breeding - Using a mix of crossover and mutation, breed a new generation of individuals and add them to your current population.
+\end{itemize}
+  Each movement in the maze will be encoded as a gene. 0 for North, 1 for east, 2 for south, 3 for west. The chromosome for each individual will be a sequential list of movements taken. Once I have created the genetic algorithm library and solved the maze with this solution, if I have additional time I may attempt a more complicated approach. For this attempt, instead of encoding movements, I would write a set of functions and each gene would represent a different function the individual can call.  The end goal of this attempt would be a solution that would work for any well-formed maze. Regardless of reaching the latter goal, I will also create a UI for the project that allows the user to initiate the maze solving and see the results for each generation.  I may also include in the UI a way to watch the process of each individual as it makes its way through the maze.
+
+  \subsection{Success Criteria}
+	 For this project to be considered successful it must:
+	 \begin{itemize}
+		\item Create a genetic algorithm library that is fit for solving well-formed mazes.\\The minimum qualifications of fit for use are:
+		  \begin{itemize}
+			 \item It must be able to create a starting population of individuals
+			 \item It must be able to evaluate the fitness of each individual in the population
+			 \item It must be able to select the best individuals and breed them.
+			 \item It must be able to mutate the individuals selected for the new generation
+			 \item It must be able to repeat this cycle using the last created generation
+			 \item It must be able to terminate when a desired fitness level or a predefined stopping time is reached.  
+			 \item It must include the option to change the algorithms used for selection, mutation, optimization, and fitness.
+		  \end{itemize}
+		\item Use the genetic algorithm library to create a solution capable of reaching the exit of a well-formed maze.
+		\item Allow the user to initiate maze solving.
+		\item Display the results to the user
+	 \end{itemize}
+  \subsection{Tasks}
+  \begin{enumerate}
+	 \item\label{proposal} Preliminary research and proposal preparation
+	 \item\label{research} Research
+		\begin{enumerate}
+		  \item\label{r:maze} Research a maze generating algorithm or decide to create one.
+		  \item\label{r:algorithms} Research selection, breeding, mutation, optimization, and fitness algorithms.
+		  \item\label{r:display} Research a method to display the results
+		\end{enumerate}
+	 \item\label{srs} Requirements specification
+	 \item\label{design} Design
+		\begin{enumerate} 
+		  \item\label{d:maze} Select a maze generating algorithm.
+		  \item\label{d:genes} Select what genes to include.
+		  \item\label{d:algorithms} Select the fitness, selection, breeding, mutation, and optimization algorithms.
+		  \item\label{d:UML} Create a UML diagram for the library.
+		  \item\label{d:display} Create a UML diagram for the UI.
+		  \item\label{d:jira} Create Jira issues to prepare for development
+		\end{enumerate}
+	 \item\label{development} Development
+		\begin{enumerate}
+		  \item\label{dev:netbeans} Setup a maven project in NetBeans
+		  \item\label{dev:interfaces} Develop the Java interfaces for:
+			 \begin{itemize}
+				\item\label{dev:i:fitness} Fitness
+				\item\label{dev:i:selection} Selection
+				\item\label{dev:i:breeding} Breeding
+				\item\label{dev:i:mutation} Mutation
+				\item\label{dev:i:optimization} Optimization
+				\item\label{dev:i:genes} Genes
+				\item\label{dev:i:chromosomes} Chromosomes
+				\item\label{dev:i:individuals} Individuals
+				\item\label{dev:i:population} Population
+				\item\label{dev:i:mazes} Mazes
+			 \end{itemize}
+		  \item\label{dev:driver} Develop the genetic algorithm driver
+		  \item\label{dev:implementInterfaces} Implement the interfaces for:
+			 \begin{enumerate}
+				\item\label{dev:fitness} Fitness\footnote{I recognize that this level of reference nesting is ridiculous. In spite of that, I will likely need to refer to these tasks individually in my weekly report, so I used it anyway.}
+				\item\label{dev:selection} Selection
+				\item\label{dev:breeding} Breeding
+				\item\label{dev:mutation} Mutation
+				\item\label{dev:optimization} Optimization
+				\item\label{dev:genes} Genes
+				\item\label{dev:chromosomes} Chromosomes
+				\item\label{dev:individuals} Individuals
+				\item\label{dev:population} Population
+				\item\label{dev:mazes} Mazes
+			 \end{enumerate}
+		  \item\label{dev:UI}  Develop the UI
+		\end{enumerate}
+	 \item\label{quality} Quality Assurance
+		\begin{enumerate}
+		  \item\label{qa:interfaces} Perform unit testing on the interface implementations\footnote{Did you get as tired of reading the laundry list of interfaces as I was of writing it?}
+		  \item\label{qa:int:driver} Perform integration testing on the genetic algorithm driver with the implemented interfaces
+		  \item\label{qa:int:ui} Perform integration testing on the UI
+		\end{enumerate}
+  \end{enumerate}
+\section{Scope}
+  This section describes the MVP for the project. If this project is completed ahead of schedule, I reserve the right to include items from the ``What is not included'' subsection.
+  \subsection{What is included}
+  \begin{itemize}
+	 \item A non IEEE standard design document
+	 \item A non IEEE standard requirements document
+	 \item A genetic algorithm library written from scratch in Java by me.
+	 \item The implementation in Java of crossover, mutation, selection, and fitness algorithms.
+	 \item A Java program that uses my genetic algorithm library to solve a well-formed maze.
+  \end{itemize}
+  \subsection{What is not included}
+  \begin{itemize}
+			 \item The conceptual creation of crossover, mutation, selection, or fitness algorithms\footnote{I will be finding and adapting the algorithms I find and implementing those algorithms in Java. I am not responsible for innovating new mathematical or conceptual algorithms for crossover, mutation, selection or fitness}
+	 \item The creation and implementation of a maze generating algorithm
+	 \item A graphical user interface
+	 \item Solving mazes that are not well-formed
+	 \item Solving mazes supplied by the user.
+	 \item Preparing the genetic algorithm library for distribution.
+	 \item Complete documentation (User Manual, IEEE standard SRS or SDD\footnote{I will still be providing the non-standard SRS and SDD documents}, etc.)
+  \end{itemize}
+
+  \section{Task and Schedule}
+	 \begin{longtable}{lllc}
+	 \toprule
+	 \textbf{Task Reference and Name} & \textbf{Start Date} & \textbf{Stop Date} & \textbf{Estimated Hours}\\\midrule
+	 \endhead
+	 \ref{proposal} \textbf{Preliminary Research and Proposal} 	& \bf 12/01/2015 & \bf 12/11/2015 & \bf 30  \\ 
+	 \ref{r:maze} Research maze generating algorithm 	& 12/01/2015 & As needed\footnote{I performed most of my research concurrently with the creation of this proposal. I feel I have a good general knowledge base to work with.  Further research will only occur as needed to further my design/development work, and related time will be grouped under the related design and/or development categories.} & *  \\
+	 \ref{r:genes}	Research genes to use 					& 12/01/2015 & As needed  & *  \\
+	 \ref{r:algorithms} Research various algorithms   	& 12/01/2015 & As needed  & *  \\
+	 \ref{r:display} Research display method				& 12/01/2015 & As needed  & *  \\
+	 \ref{srs} \textbf{Requirements specification}		& \bf 12/11/2015 & \bf 12/16/2015 & \bf 32 \\
+	 \ref{design} \textbf{Design}								& \bf 12/11/2015 & \bf 12/19/2015 & \bf 32 \\
+	 \ref{d:maze} Select a maze generating algorithm	& 12/17/2015 & 12/19/2015 & 2  \\
+	 \ref{d:genes} Select what genes to include\footnote{already complete}	& 12/01/2015 & 12/05/2015 & 2  \\
+	 \ref{d:algorithms} Select various algorithms		& 12/17/2015 & 12/19/2015 & 16 \\
+	 \ref{d:UML} UML for Library								& 12/21/2015 & 12/23/2015 & 8	 \\
+	 \ref{d:display} UML for the UI							& 12/21/2015 & 12/23/2015 & 2  \\
+	 \ref{d:jira} Create Jira issues							& 12/17/2015 & 12/19/2015 & 2  \\
+	 \ref{development} \textbf{Development}					& \bf 12/17/2015 & \bf 01/02/2016 & \bf 70 \\
+	 \ref{dev:netbeans} Create NetBeans project			& 12/17/2015 & 12/19/2015 & 2  \\
+	 \ref{dev:interfaces} Create interfaces/stubs 		& 12/21/2015 & 12/23/2015 & 24 \\
+	 \ref{dev:driver} Develop the driver					& 12/28/2015 & 01/02/2016 & 4  \\
+	 \ref{dev:fitness} Implement fitness					& 12/28/2015 & 01/02/2016 & 6  \\
+	 \ref{dev:selection} Implement selection				& 12/28/2015 & 01/02/2016 & 4  \\
+	 \ref{dev:breeding} Implement breeding					& 12/28/2015 & 01/02/2016 & 8	 \\
+	 \ref{dev:mutation} Implement mutation					& 12/28/2015 & 01/02/2016 & 2	 \\
+	 \ref{dev:genes} Implement genes							& 12/28/2015 & 01/02/2016 & 2	 \\
+	 \ref{dev:chromosomes} Implement chromosomes			& 12/28/2015 & 01/02/2016 & 2	 \\
+	 \ref{dev:individuals} Implement individuals			& 12/28/2015 & 01/02/2016 & 2	 \\
+	 \ref{dev:population} Implement population			& 12/28/2015 & 01/02/2016 & 2	 \\
+	 \ref{dev:mazes} Implement a maze						& 12/28/2015 & 01/02/2016 & 4	 \\
+	 \ref{dev:UI} Implement UI									& 12/28/2015 & 01/02/2016 & 8	 \\
+	 \ref{quality} \bf Quality Assurance					& \bf 12/28/2015 & \bf 01/05/2016 & \bf 8 \\
+	 \ref{qa:interfaces} Unit test interfaces          & 12/21/2015 & 01/05/2016 & 6 \\
+	 \ref{qa:int:driver} Integration test driver \& UI	& 01/02/2015 & 01/05/2016 & 2 \\
+	 \midrule
+	 \multicolumn{3}{l}{\textbf{Total Hours}} & 140 \\
+	 \bottomrule
+  \end{longtable}
+\section{Deliverables}
+  \begin{itemize}
+	 \item All source code for the project
+	 \item A Java jar or war file\footnote{Haven't made this design decision yet.} of the maze solving program.
+	 \item UML for library, driver, and UI from design time.\footnote{If required, I can also deliver updated UML diagrams that reflect the state of the deliverable jar/war}
+  \end{itemize}
+\section{Applicability}
+  \subsection{Integration with previous material}
+  \begin{itemize}
+	 \item Discrete Mathematics\\
+		Working with mazes and maze solving requires me to use graph theory
+	 \item Object Oriented Programming and Java\\
+		I will be programming this assignment using Java and following the Object Oriented paradigm.
+	 \item Data Structures\\
+		I will need to represent the maze as a graph of connected nodes.
+	 \item Technical Communication\\
+		Creating this proposal, the simplified SRS, the summary, and the final presentation will draw on the professional skills I learned in technical communication.
+	 \item Software Engineering\\
+		The evidence of design and the requirements specification will draw on the engineering skills I learned in Software Engineering. 
+  \end{itemize}
+  \subsection{Exclusive of CS curriculum}
+	 Genetic algorithms may be a part of the Machine Learning class, but I don't know for sure as I haven't taken the class.  No other class on campus I know about reviews the principles of genetic algorithms, and I haven't studied genetic algorithms in any of my course work (excepting the research for this class). 
+\section{Required Resources}
+\begin{center}	 
+  \begin{tabular}{ll}
+		\toprule
+		\textbf{Resource} & \textbf{Cost (\$)}\\
+		\midrule
+		A computer connected to the Internet and capable of running NetBeans & 0.00\footnote{Already owned}\\
+		Jira 7.03 Server edition & 10.00\footnote{I will absorb this cost if the school doesn't want to fund it.}\\
+		\bottomrule
+ \end{tabular}
+\end{center}
+\begin{sloppypar}
+\printbibliography{}
+\end{sloppypar}
+\end{document}

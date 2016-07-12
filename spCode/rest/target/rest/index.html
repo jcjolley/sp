@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+		<title>Senior Project</title>
+		<script src="jquery-2.2.3.min.js" type="text/javascript"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
+		<script src="//rawgithub.com/phpepe/highcharts-regression/master/highcharts-regression.js"></script>
+		<style>
+			body { background: #DDDDE5;}
+			.maze{ width: 450px; box-shadow:3px 3px 3px 3px grey;}
+			.square{
+				padding: 0;
+				margin: 0;
+				width:15px;
+				height:15px;
+				display: inline-block;
+			}
+			.entrance{background: blue !important;}
+			.exit{background: green !important;}
+			.wall{ background: black !important;}
+			.open{ background: whitesmoke;}
+			.shortest {background: lightgrey}
+			.individual {background: rgba(20,200,20,.5)}
+			.container {}
+			.well {box-shadow:3px 3px 3px 3px grey;}
+			.container-fluid{margin:20px;}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class='navbar'><h1>Maze Solving</h1><small>with Genetic Algorithms</small></div>
+			<div id="mazeContainer">
+				<div class='alert alert-info text-center'>
+					<img src="loading.gif" style="width:50px; margin-left:auto; margin-right:auto;"><h3 style="margin-left:40px;"> Loading . . . </h1>
+				</div>
+			</div>
+			<div id="highcart" style="margin-top:20px;"></div>
+		</div>
+		<script>
+			function solveMaze() {
+				$.get("/rest/sp/htmlMaze", function (data) {
+					var results = data.split(/NEWSECTION/);
+					$("#mazeContainer").html(results[0]);
+					$(function () {
+				$('#highcart').highcharts({
+					chart: {
+						type: 'line'
+					},
+					title: {
+						text: 'Fitness Information'
+					},
+					xAxis: {
+						title: {text: 'Generation'}
+					},
+					yAxis: {
+						title: { text: 'Steps from the exit' },
+					},
+					series: [
+						 {
+							regression: true,
+							name: 'Max Fitness',
+							data: JSON.parse(results[2])
+						}]
+				});
+			});
+				});
+			}
+
+			solveMaze();
+		</script>
+		<script>
+			
+		</script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	</body>
+</html>

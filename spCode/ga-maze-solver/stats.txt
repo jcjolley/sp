@@ -1,0 +1,46 @@
+Overall Best Fitness: 0
+Overall Average Fitness: 4.9E-324
+
+Generation 5:
+	Max Fitness = -2
+	Average Fitness = -18.625
+
+Generation 4:
+	Max Fitness = 0
+	Average Fitness = -18.458333333333332
+
+Generation 3:
+	Max Fitness = -6
+	Average Fitness = -33.08
+
+
+Generation 1:
+	Max Fitness = -6
+	Average Fitness = -33.36
+
+
+Generation 2:
+	Max Fitness = -14
+	Average Fitness = -32.2
+
+
+Generation 3:
+	Max Fitness = -6
+	Average Fitness = -33.08
+
+
+Generation 4:
+	Max Fitness = 0
+	Average Fitness = -18.458333333333332
+
+
+Generation 5:
+	Max Fitness = -2
+	Average Fitness = -18.625
+
+
+Generation 6:
+	Max Fitness = -2147483648
+	Average Fitness = 0.0
+
+

@@ -1,0 +1,32 @@
+% arara: xelatex: {synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style"}
+% arara: xelatex: {synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style"}
+\documentclass[letterpaper, 12pt]{article}
+\usepackage{fontspec}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage[letterpaper, portrait, margin=1in, headheight=15pt]{geometry}
+\usepackage{tabularx}
+\setmainfont{Adobe Garamond Pro}
+\pagestyle{fancy}
+\lhead{Joshua Jolley}
+\chead{Requirements}
+\rhead{CS499}
+\newcounter{requirement}
+\setcounter{requirement}{0}
+\usepackage{microtype}
+\usepackage{array}
+\begin{document}
+\newcommand{\req}{%
+  \stepcounter{requirement}
+  \arabic{requirement}.}
+\section{Requirements}
+  \begin{tabularx}{\textwidth}{l X X X}
+  \toprule\textbf{ID} & \textbf{Functional Requirement} & \textbf{Demonstration Scenario} & \textbf{Success Measure}\\ \midrule 
+	 \req{} & The program shall load a maze. & Attempt to load a maze & The maze is successfully loaded into the program. \\
+	 \req{} & The program shall solve a well-formed maze under 150X150 size in 10 minutes or less. & Attempt to solve a maze. & A solution is found and it took less than 10 minutes. \\
+	 \req{} & The program will inform the user of the average fitness of each generation & Attempt to solve a maze. & Have access to the results of the average fitness for each generation on the screen. \\
+	 \req{} & The program shall inform the user of the highest fitness from each generation & Attempt to solve a maze. & Have access to the results for the highest fitness from each generation on the screen. \\
+	 \req{} & 
+  \bottomrule
+	\end{tabularx}
+  \end{document}
