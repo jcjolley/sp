@@ -23,14 +23,10 @@
  */
 package com.jcjolley.ga.maze.solver;
 
-import com.google.common.collect.Lists;
 import com.jcjolley.ga.interfaces.Gene;
 import com.jcjolley.maze.Direction;
 import com.jcjolley.maze.Node;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.EnumSet;
-import java.util.List;
 import java.util.Objects;
 
 /**

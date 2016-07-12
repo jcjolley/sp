@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-t8deploy</actionName>
+            <displayName>t8deploy</displayName>
+            <goals>
+                <goal>tomcat8:deploy</goal>
+            </goals>
+        </action>
+    </actions>

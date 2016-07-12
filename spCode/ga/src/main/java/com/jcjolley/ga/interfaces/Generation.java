@@ -31,12 +31,6 @@ import java.util.List;
  */
 public interface Generation {
 
-	/**
-	 *
-	 * @param individuals
-	 * @return
-	 */
-	
 	public List<Individual> getIndividuals();
 
 	public void setIndividuals(List<Individual> individuals);

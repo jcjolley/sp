@@ -26,7 +26,6 @@ package com.jcjolley.ga.abstractClasses;
 import com.google.common.collect.Lists;
 import com.jcjolley.ga.interfaces.Generation;
 import com.jcjolley.ga.interfaces.Population;
-import com.jcjolley.ga.maze.solver.MazeIndividual;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -61,6 +60,7 @@ public abstract class AbstractPopulation implements Population {
 		generations.stream().map(Generation::toString).forEach(lines::add);
 	}
 	
+	@Override
 	public List<String> getStatistics(){
 		List<String> lines = Lists.newArrayList();	
 		lines.add(this.toString());
@@ -79,11 +79,6 @@ public abstract class AbstractPopulation implements Population {
 				.findFirst().get();
 		
 		return "Overall Best Fitness: " + maxFitness + "\n\n" + generations.get(generations.size() - 1); 
-//				 generations.stream().filter(g -> g.getAverageFitness() != 0)
-//						 .sorted((g1, g2) -> Integer.compare(g2.getCount(), g1.getCount()))
-//						 .limit(3)
-//						 .map(Generation::toString)
-//						 .collect(Collectors.joining());
 	}
 
 	@Override

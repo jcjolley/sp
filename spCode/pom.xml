@@ -6,10 +6,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>../ga</module>
-        <module>../ga-maze-solver</module>
-        <module>../maze</module>
-        <module>../rest</module>
+        <module>ga-maze-solver</module>
+        <module>maze</module>
+        <module>rest</module>
+        <module>ga</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

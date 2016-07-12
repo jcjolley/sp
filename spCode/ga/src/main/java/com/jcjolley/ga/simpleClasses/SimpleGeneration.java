@@ -27,7 +27,6 @@ import com.jcjolley.ga.abstractClasses.AbstractGeneration;
 import com.jcjolley.ga.interfaces.Generation;
 import com.jcjolley.ga.interfaces.Individual;
 import java.util.List;
-import java.util.stream.Collectors;
 import static java.util.stream.Collectors.toList;
 
 /**

@@ -27,7 +27,6 @@ import com.google.common.collect.Lists;
 import com.jcjolley.ga.interfaces.CrossoverMethod;
 import com.jcjolley.ga.interfaces.Gene;
 import com.jcjolley.ga.interfaces.Parents;
-import com.jcjolley.maze.Maze;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -41,7 +40,6 @@ public class CrossoverMethods {
 	
 	/**
 	 * 
-	 * @param maze
 	 * @return 
 	 */
 	public static CrossoverMethod basicMethod() {

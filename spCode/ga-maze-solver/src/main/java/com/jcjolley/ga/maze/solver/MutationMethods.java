@@ -40,7 +40,7 @@ public class MutationMethods {
 	{
 		MutationMethod mm = (List<Gene> chromosome) -> {
 			Gene g = MazeGene.create(Direction.random());
-			int rand = RNG.nextInt(20);
+			int rand = RNG.nextInt(50);
 			for (int i = 0; i < rand; i++) {
 					int index = RNG.nextInt(chromosome.size());
 					chromosome.remove(index);

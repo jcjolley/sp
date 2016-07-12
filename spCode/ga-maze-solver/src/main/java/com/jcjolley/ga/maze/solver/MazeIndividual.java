@@ -55,14 +55,14 @@ public class MazeIndividual implements Individual {
 		MazeIndividual mi = new MazeIndividual();
 		mi.maze = m;
 		mi.chromosome = chromosome;
-		mi.path = new ArrayList<Node>();
+		mi.path = new ArrayList<>();
 		mi.fitness = mi.determineFitness();
 		return mi;
 	}
 
 	public static Individual create(Maze m) {
 		List<Gene> chromosome = Lists.newArrayList();
-		int cLength = m.getShortestPath(m.getEntrance(), m.getExit()).size() * 4; 
+		int cLength = m.getShortestPath(m.getEntrance(), m.getExit()).size() * 6; 
 		Direction last = Direction.NORTH;
 		for (int i = 0; i < cLength; i++) {
 			Direction d = Direction.random();

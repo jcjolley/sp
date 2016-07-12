@@ -84,7 +84,7 @@ public class MazeResources{
 					.findFirst()
 					.get();
 			bests.addLast(bestFitness);
-			if (bests.size() >= 20) {
+			if (bests.size() >= 50) {
 				Integer test = bests.getFirst();
 				bests.removeFirst();
 				for (Integer best : bests) {
@@ -93,9 +93,9 @@ public class MazeResources{
 				}
 			}
 			count++;
-		}	while ((count < 20) || !stop);
+		}	while ((count < 50) || !stop);
 
-		p.setGenerations(p.getGenerations().stream().limit(p.getGenerations().size() - 19).collect(toList()));
+		p.setGenerations(p.getGenerations().stream().limit(p.getGenerations().size() - 49).collect(toList()));
 		//Get ready to display on the webpage
 		List<String> stats = p.getStatistics();
 		
